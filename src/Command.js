@@ -55,7 +55,6 @@ class Command {
     } catch (err) {
       this.log.err(err, `${this.name.toUpperCase()} on run`)
       this.send(msg, 'Something bad happened.', 5000)
-      return
     }
   }
 
@@ -67,18 +66,18 @@ class Command {
     }
     return new Promise((resolve, reject) => {
       this.self.createMessage(msg.channel.id, content)
-      .then(msg => {
-        this.self.counts.msgsSent = this.self.counts.msgsSent + 1
-        if (deleteDelay) {
-          if (this.deleteAfter) return resolve(msg)
-          setTimeout(() => {
-            this.self.deleteMessage(msg.channel.id, msg.id)
-            .then(() => { resolve(msg) }).catch(reject)
-          }, deleteDelay)
-        }
-        return resolve(msg)
-      })
-      .catch(reject)
+        .then(msg => {
+          this.self.counts.msgsSent = this.self.counts.msgsSent + 1
+          if (deleteDelay) {
+            if (this.deleteAfter) return resolve(msg)
+            setTimeout(() => {
+              this.self.deleteMessage(msg.channel.id, msg.id)
+                .then(() => { resolve(msg) }).catch(reject)
+            }, deleteDelay)
+          }
+          return resolve(msg)
+        })
+        .catch(reject)
     })
   }
 
@@ -87,18 +86,18 @@ class Command {
     if (!embed.color) embed.color = this.defaultColor
     return new Promise((resolve, reject) => {
       this.self.createMessage(msg.channel.id, { content: '', embed: embed })
-      .then(msg => {
-        this.self.counts.msgsSent = this.self.counts.msgsSent + 1
-        if (deleteDelay) {
-          if (this.deleteAfter) return resolve(msg)
-          setTimeout(() => {
-            this.self.deleteMessage(msg.channel.id, msg.id)
-            .then(() => { resolve(msg) }).catch(reject)
-          }, deleteDelay)
-        }
-        return resolve(msg)
-      })
-      .catch(reject)
+        .then(msg => {
+          this.self.counts.msgsSent = this.self.counts.msgsSent + 1
+          if (deleteDelay) {
+            if (this.deleteAfter) return resolve(msg)
+            setTimeout(() => {
+              this.self.deleteMessage(msg.channel.id, msg.id)
+                .then(() => { resolve(msg) }).catch(reject)
+            }, deleteDelay)
+          }
+          return resolve(msg)
+        })
+        .catch(reject)
     })
   }
 
@@ -110,17 +109,17 @@ class Command {
     }
     return new Promise((resolve, reject) => {
       this.self.editMessage(msg.channel.id, msg.id, content)
-      .then(m => {
-        if (deleteDelay) {
-          if (this.deleteAfter) return resolve(m)
-          setTimeout(() => {
-            this.self.deleteMessage(m.channel.id, m.id)
-            .then(() => { resolve(m) }).catch(reject)
-          }, deleteDelay)
-        }
-        return resolve(m)
-      })
-      .catch(reject)
+        .then(m => {
+          if (deleteDelay) {
+            if (this.deleteAfter) return resolve(m)
+            setTimeout(() => {
+              this.self.deleteMessage(m.channel.id, m.id)
+                .then(() => { resolve(m) }).catch(reject)
+            }, deleteDelay)
+          }
+          return resolve(m)
+        })
+        .catch(reject)
     })
   }
 

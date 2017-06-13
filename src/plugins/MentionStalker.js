@@ -47,8 +47,6 @@ module.exports = (self, log, config) => {
           })
         } else { log.err('Invalid config, "notificationChannelID". Must be a channel ID from a server you are in.', 'Mention Stalker'); process.exit() }
       }
-      return
     }
-    return
   })
 }

@@ -14,8 +14,8 @@ module.exports = (self) => {
 
     // Ban user
     msg.channel.guild.banMember(user.id, deleteDays)
-    .then(() => this.send(msg, `🔨 - *Dropped the hammer on ${user.username}#${user.discriminator}* (Deleted ${deleteDays} days)`))
-    .catch((err) => { this.log.err(err, 'Ban'); this.send(msg, `Could not ban ${user.username}.`) })
+      .then(() => this.send(msg, `🔨 - *Dropped the hammer on ${user.username}#${user.discriminator}* (Deleted ${deleteDays} days)`))
+      .catch((err) => { this.log.err(err, 'Ban'); this.send(msg, `Could not ban ${user.username}.`) })
   }, {
     perms: ['banMembers'],
     noPms: true

@@ -12,8 +12,8 @@ module.exports = (self) => {
 
     // Kick user
     msg.channel.guild.kickMember(user.id)
-    .then(() => this.send(msg, '👌'))
-    .catch((err) => { this.log.err(err, 'Kick'); this.send(msg, `Could not kick ${user.username}`) })
+      .then(() => this.send(msg, '👌'))
+      .catch((err) => { this.log.err(err, 'Kick'); this.send(msg, `Could not kick ${user.username}`) })
   }, {
     perms: ['kickMembers'],
     noPms: true

@@ -55,8 +55,6 @@ module.exports = (self, log, config) => {
         }
         continue
       }
-      return
     }
-    return
   })
 }

@@ -85,9 +85,7 @@ self.on('messageCreate', (msg) => {
       setTimeout(() => self.deleteMessage(msg.channel.id, msg.id), 750)
       command.process(msg, args)
     }
-    return
   }
-  return
 })
 
 // Event handling
@@ -109,7 +107,7 @@ if (config.rotateAvatarImage) {
         try {
           let data = fs.readFileSync(path.join(dir, avatar))
           log.fs(`Loaded: ${avatar}`, 'Avatars')
-          avatars.push(`data:image/${ext[0].replace('.', '')};base64,` + new Buffer(data).toString('base64'))
+          avatars.push(`data:image/${ext[0].replace('.', '')};base64,` + Buffer.alloc(data).toString('base64'))
         } catch (err) { log.err(err, 'Avatars Directory Reading') }
       }
       if (avatars.length === 0) return log.fs('No images found.', 'Avatars')
